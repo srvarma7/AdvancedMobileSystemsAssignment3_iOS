@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52C5BCF37959B3F7551EA6A4 /* Pods_MotionEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D9A3A4B0969D8C3E521B10 /* Pods_MotionEffect.framework */; };
+		6DB81768236F5C05000F7782 /* forest.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DB81767236F5C05000F7782 /* forest.json */; };
 		6DDF88D5236D6A4600D0C5CD /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF88D4236D6A4600D0C5CD /* DriverViewController.swift */; };
 		6DDF88D8236D786B00D0C5CD /* carAlertSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6DDF88D7236D786B00D0C5CD /* carAlertSound.mp3 */; };
 		6DDF88DA236D7CEB00D0C5CD /* cardoor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6DDF88D9236D7CEB00D0C5CD /* cardoor.mp3 */; };
@@ -20,11 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6DB81767236F5C05000F7782 /* forest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forest.json; sourceTree = "<group>"; };
 		6DDF88D4236D6A4600D0C5CD /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
 		6DDF88D7236D786B00D0C5CD /* carAlertSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = carAlertSound.mp3; sourceTree = "<group>"; };
 		6DDF88D9236D7CEB00D0C5CD /* cardoor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cardoor.mp3; sourceTree = "<group>"; };
 		6DDF88DB236D7D9500D0C5CD /* SensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorData.swift; sourceTree = "<group>"; };
 		6DDF88DD236D828500D0C5CD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		80D9A3A4B0969D8C3E521B10 /* Pods_MotionEffect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MotionEffect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		869030F61D6231850092C9DE /* iCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869030F91D6231850092C9DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869030FB1D6231850092C9DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +36,8 @@
 		869031001D6231850092C9DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		869031031D6231850092C9DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		869031051D6231850092C9DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A02FDDCB0F99CFE79757A28C /* Pods-MotionEffect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotionEffect.release.xcconfig"; path = "Target Support Files/Pods-MotionEffect/Pods-MotionEffect.release.xcconfig"; sourceTree = "<group>"; };
+		EA7A079B7CAFE6AB5BEAFBA5 /* Pods-MotionEffect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotionEffect.debug.xcconfig"; path = "Target Support Files/Pods-MotionEffect/Pods-MotionEffect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,12 +45,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52C5BCF37959B3F7551EA6A4 /* Pods_MotionEffect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59D56BDCAEF7D37583BFBB76 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EA7A079B7CAFE6AB5BEAFBA5 /* Pods-MotionEffect.debug.xcconfig */,
+				A02FDDCB0F99CFE79757A28C /* Pods-MotionEffect.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6D6A40EE236F5A5900A78E96 /* Lottie Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DB81767236F5C05000F7782 /* forest.json */,
+			);
+			path = "Lottie Files";
+			sourceTree = "<group>";
+		};
 		6DDF88D6236D77EF00D0C5CD /* Sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,7 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				869030F81D6231850092C9DE /* MotionEffect */,
+				6D6A40EE236F5A5900A78E96 /* Lottie Files */,
 				869030F71D6231850092C9DE /* Products */,
+				59D56BDCAEF7D37583BFBB76 /* Pods */,
+				C6CA6D43FDBDEA59A25BD938 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +114,14 @@
 			path = MotionEffect;
 			sourceTree = "<group>";
 		};
+		C6CA6D43FDBDEA59A25BD938 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80D9A3A4B0969D8C3E521B10 /* Pods_MotionEffect.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 869031081D6231850092C9DE /* Build configuration list for PBXNativeTarget "MotionEffect" */;
 			buildPhases = (
+				B0C9A48B2C20340A04BE10FB /* [CP] Check Pods Manifest.lock */,
 				869030F21D6231840092C9DE /* Sources */,
 				869030F31D6231840092C9DE /* Frameworks */,
 				869030F41D6231840092C9DE /* Resources */,
+				7F57F8F0876AB924D2578596 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,11 +189,55 @@
 				6DDF88DA236D7CEB00D0C5CD /* cardoor.mp3 in Resources */,
 				6DDF88D8236D786B00D0C5CD /* carAlertSound.mp3 in Resources */,
 				869031011D6231850092C9DE /* Assets.xcassets in Resources */,
+				6DB81768236F5C05000F7782 /* forest.json in Resources */,
 				869030FF1D6231850092C9DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7F57F8F0876AB924D2578596 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MotionEffect/Pods-MotionEffect-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MotionEffect/Pods-MotionEffect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0C9A48B2C20340A04BE10FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MotionEffect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		869030F21D6231840092C9DE /* Sources */ = {
@@ -286,6 +367,7 @@
 		};
 		869031091D6231850092C9DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA7A079B7CAFE6AB5BEAFBA5 /* Pods-MotionEffect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5G9HGCW6QY;
@@ -300,6 +382,7 @@
 		};
 		8690310A1D6231850092C9DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A02FDDCB0F99CFE79757A28C /* Pods-MotionEffect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5G9HGCW6QY;

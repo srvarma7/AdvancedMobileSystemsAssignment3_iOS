@@ -8,16 +8,14 @@
 
 import UIKit
 import AVFoundation
+import Lottie
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var lottieAnimationView: LottieView!
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-//    let popSound = Bundle.main.path(forResource: "pop.mp3", ofType:nil)!
-//    var audioPlayer = AVAudioPlayer()
-//    audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: popSound))
-//
-
     var soundAlert = Bundle.main.path(forResource: "", ofType: "mp3")
     var audioPlayer: AVAudioPlayer!
     
@@ -27,6 +25,17 @@ class ViewController: UIViewController {
         print("App started in viewController")
         
         applyMotionEffect(toView: backgroundImageView, magnitude: 100)
+    
+        
+        if let animationView = LOTAnimationView(name: "forest") {
+            animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+            animationView.center = self.view.center
+            animationView.contentMode = .scaleAspectFill
+            
+            view.addSubview(animationView)
+        
+            animationView.play()
+        }
         
     }
     
