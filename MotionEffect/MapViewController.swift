@@ -10,12 +10,18 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+
+
+
+
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    var speed: String!
+
+    @IBOutlet weak var speedLimitLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    
     @IBOutlet weak var userSpeedImg: UIImageView!
-    
     @IBOutlet weak var speedLimitImg: UIImageView!
     
     
@@ -61,7 +67,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.speedLimitImg.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             self.speedLimitImg.clipsToBounds = true
         })
-        updateSppedLimit(latitude: 0, longitude: 0)
+        
         
     }
         
@@ -70,7 +76,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let location: CLLocation = locations.last!
         
-        updateSppedLimit(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        //updateSppedLimit(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         
         focusLocation = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), latitudinalMeters: 50, longitudinalMeters: 50)
         let cam = MKMapCamera()
@@ -85,26 +91,90 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func updateSppedLimit(latitude: Double, longitude: Double)
     {
-        var url = URL(string: "https://geocoder.api.here.com/6.2/geocode.json?app_id=kJcJidNfXQFNl0HDdYn8&app_code=QI_V3nUsFDxT4WKjhtIUVg&searchtext=425+W+Randolph+Chicago")
+        let lat = String(format: "%f", latitude)
+        let lon = String(format: "%f", longitude)
+        
+        let url = URL(string: "https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=" + lat + "," + lon + ",50&mode=retrieveAddresses&locationAttributes=linkInfo&gen=9&app_id=bGsxRlcLJl9jlkPw8llT&app_code=P61HIba-X4DxDhv2SypcFg")
         
         URLSession.shared.dataTask(with: url!) { data, _, _ in
             if let data = data {
-                print(data)
-                
-                /*
                 let resp = try? JSONDecoder().decode(JsonResponse.self, from: data)
-                let d: Double = round((resp?.main.temp)!)
-                let intTemp = Int(d)
-                self.apiTemperature = intTemp
-                DispatchQueue.main.async {
-                    self.makeGetRequestImage(icon: (resp?.weather[0].icon)!)
-                    self.apiLocationName.text = resp?.name
-                    self.apiDescLabel.text = resp?.weather[0].description
-                    self.apiTemp.text = String(format: "%i", intTemp - 273) + " °C"
-                }
-                */
+                self.speed = (resp?.Response.View.first?.Result.first?.Location.LinkInfo.SpeedCategory)!
+                print(self.speed!)
+                print("Speed retrieved")
+                //self.displaySpeedLimit()
             }
-            }.resume()
+        }.resume()
+        
+        if speed == "SC1"{
+            print(">130")
+            speedLimitLabel.text = ">130"
+        }
+        else if speed == "SC2"{
+            print("130")
+            speedLimitLabel.text = "130"
+        }
+        else if speed == "SC3"{
+            print("100")
+            speedLimitLabel.text = "100"
+        }
+        else if speed == "SC4"{
+            print("90")
+            speedLimitLabel.text = "90"
+        }
+        else if speed == "SC5"{
+            print("70")
+            speedLimitLabel.text = "70"
+        }
+        else if speed == "SC6"{
+            print("50")
+            speedLimitLabel.text = "50"
+        }
+        else if speed == "SC7"{
+            print("30")
+            speedLimitLabel.text = "30"
+        }
+        else if speed == "SC8"{
+            print("<11")
+            speedLimitLabel.text = "<11"
+        }
     }
+    
+    func displaySpeedLimit() {
+        if speed == "SC1"{
+            print(">130")
+            speedLimitLabel.text = ">130"
+        }
+        else if speed == "SC2"{
+            print("130")
+            speedLimitLabel.text = "130"
+        }
+        else if speed == "SC3"{
+            print("100")
+            speedLimitLabel.text = "100"
+        }
+        else if speed == "SC4"{
+            print("90")
+            speedLimitLabel.text = "90"
+        }
+        else if speed == "SC5"{
+            print("70")
+            speedLimitLabel.text = "70"
+        }
+        else if speed == "SC6"{
+            print("50")
+            speedLimitLabel.text = "50"
+        }
+        else if speed == "SC7"{
+            print("30")
+            speedLimitLabel.text = "30"
+        }
+        else if speed == "SC8"{
+            print("<11")
+            speedLimitLabel.text = "<11"
+        }
+    }
+    
+    
 }
 

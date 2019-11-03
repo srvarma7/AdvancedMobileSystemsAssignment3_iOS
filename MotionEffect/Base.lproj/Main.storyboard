@@ -206,6 +206,7 @@
                     <connections>
                         <outlet property="mapView" destination="Oot-QC-P1d" id="OeE-gq-KRg"/>
                         <outlet property="speedLimitImg" destination="vpc-pw-2zD" id="MHf-7p-9Iv"/>
+                        <outlet property="speedLimitLabel" destination="8k0-EP-ooi" id="6Gh-ZZ-Ifp"/>
                         <outlet property="userSpeedImg" destination="R5B-zO-DT2" id="x3c-Ff-hOE"/>
                     </connections>
                 </viewController>

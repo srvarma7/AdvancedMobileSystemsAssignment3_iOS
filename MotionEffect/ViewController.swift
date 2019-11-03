@@ -10,6 +10,30 @@ import UIKit
 import AVFoundation
 import Lottie
 
+struct JsonResponse: Codable {
+    let Response: ResponseData
+}
+
+struct ResponseData: Codable {
+    let View: [ViewData]
+}
+
+struct ViewData: Codable {
+    let Result: [ResultData]
+}
+
+struct ResultData: Codable {
+    let Location: LocationData
+}
+
+struct LocationData: Codable{
+    let LinkInfo: LinkInfo
+}
+
+struct LinkInfo: Codable{
+    let SpeedCategory: String
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var lottieAnimationView: LottieView!
@@ -19,14 +43,30 @@ class ViewController: UIViewController {
     var soundAlert = Bundle.main.path(forResource: "", ofType: "mp3")
     var audioPlayer: AVAudioPlayer!
     
+    var speed: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("App started in viewController")
         
-        applyMotionEffect(toView: backgroundImageView, magnitude: 100)
-    
+//        //city
+//        updateSppedLimit(latitude: -37.815435, longitude: 144.953799)
+//
+//        //northroad
+//        updateSppedLimit(latitude: -37.910743, longitude: 145.096523)
+//        
+//        //gaddStreet
+//        updateSppedLimit(latitude: -37.909896, longitude: 145.096834)
+//
+//        //monash freeway
+//        updateSppedLimit(latitude: -37.868422, longitude: 145.063092)
         
+
+        
+        applyMotionEffect(toView: backgroundImageView, magnitude: 20)
+    
+        /*
         if let animationView = LOTAnimationView(name: "forest") {
             animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             animationView.center = self.view.center
@@ -36,7 +76,26 @@ class ViewController: UIViewController {
         
             animationView.play()
         }
+ */
         
+    }
+    
+    func updateSppedLimit(latitude: Double, longitude: Double)
+    {
+        let lat = String(format: "%f", latitude)
+        let lon = String(format: "%f", longitude)
+        
+        let url = URL(string: "https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox="+lat+","+lon+",50&mode=retrieveAddresses&locationAttributes=linkInfo&gen=9&app_id=bGsxRlcLJl9jlkPw8llT&app_code=P61HIba-X4DxDhv2SypcFg")
+        
+        URLSession.shared.dataTask(with: url!) { data, _, _ in
+            if let data = data {
+                let resp = try? JSONDecoder().decode(JsonResponse.self, from: data)
+                self.speed = (resp?.Response.View.first?.Result.first?.Location.LinkInfo.SpeedCategory)!
+                print(self.speed!)
+                print("Speed retrieved")
+                self.displaySpeedLimit()
+            }
+        }.resume()
     }
     
     
@@ -48,6 +107,33 @@ class ViewController: UIViewController {
             audioPlayer.play()
         } catch {
             print("couldn't load sound file")
+        }
+    }
+    
+    func displaySpeedLimit() {
+        if speed == "SC1"{
+            print(">130")
+        }
+        else if speed == "SC2"{
+            print("130")
+        }
+        else if speed == "SC3"{
+            print("100")
+        }
+        else if speed == "SC4"{
+            print("90")
+        }
+        else if speed == "SC5"{
+            print("70")
+        }
+        else if speed == "SC6"{
+            print("50")
+        }
+        else if speed == "SC7"{
+            print("30")
+        }
+        else if speed == "SC8"{
+            print("<11")
         }
     }
     
