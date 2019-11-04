@@ -23,10 +23,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var userSpeedImg: UIImageView!
     @IBOutlet weak var speedLimitImg: UIImageView!
-    
+    @IBOutlet weak var speedLimitBgImage: UIImageView!
     
     
     var locationMgr: CLLocationManager = CLLocationManager()
+    //If location is not determined, then map foucs towards city
     var focusLocation = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -37.815338, longitude: 144.963226), latitudinalMeters: 2500, longitudinalMeters: 2500)
     
     override func viewDidLoad() {
@@ -35,7 +36,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         createSpeedCircles()
         mapKitInitializers()
         
-        
     }
     
     func mapKitInitializers() {
@@ -43,9 +43,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationMgr.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationMgr.distanceFilter = 10
         locationMgr.delegate = self
+        locationMgr.startUpdatingHeading()
         locationMgr.requestAlwaysAuthorization()
         mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.follow, animated: true)
+        mapView.setUserTrackingMode(.followWithHeading, animated: true)
         mapView.setRegion(focusLocation, animated: true)
         locationMgr.startUpdatingLocation()
     }
@@ -58,20 +59,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.userSpeedImg.layer.borderWidth = 10
             self.userSpeedImg.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             self.userSpeedImg.clipsToBounds = true
-        })
-        
-        UIView.animate(withDuration: 1, animations: {
             self.speedLimitImg.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.speedLimitImg.layer.cornerRadius = (self.speedLimitImg.frame.size.width)/2
             self.speedLimitImg.layer.borderWidth = 7
             self.speedLimitImg.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             self.speedLimitImg.clipsToBounds = true
         })
-        
-        
+        UIView.animate(withDuration: 1, animations: {
+            //self.speedLimitBgImage.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            self.speedLimitBgImage.layer.cornerRadius = (self.speedLimitBgImage.frame.size.width)/10
+            self.speedLimitBgImage.layer.borderWidth = 2
+            self.speedLimitBgImage.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            self.speedLimitBgImage.clipsToBounds = true
+        })
     }
-        
-        //Updates location coordinates
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading)
+    {
+        mapView.camera.heading = newHeading.magneticHeading
+        //mapView.setCamera(mapView.camera, animated: true)
+    }
+    
+    //Updates location coordinates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location: CLLocation = locations.last!
@@ -86,6 +95,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         cam.heading = 0
         mapView.setRegion(focusLocation, animated: true)
         mapView.setCamera(cam, animated: true)
+//        UIView.animate(withDuration: 1, animations: {
+//            //self.speedLimitLabel.text = self.speed
+//            self.speedLimitLabel.transform = CGAffineTransform(translationX: +7, y: 0)
+//        })
+        
         
     }
     
@@ -102,7 +116,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 self.speed = (resp?.Response.View.first?.Result.first?.Location.LinkInfo.SpeedCategory)!
                 print(self.speed!)
                 print("Speed retrieved")
-                //self.displaySpeedLimit()
             }
         }.resume()
         
@@ -121,6 +134,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         else if speed == "SC4"{
             print("90")
             speedLimitLabel.text = "90"
+            UIView.animate(withDuration: 1, animations: {
+                self.speedLimitLabel.text = "90"
+                self.speedLimitLabel.transform = CGAffineTransform(translationX: +7, y: 0)
+            })
         }
         else if speed == "SC5"{
             print("70")

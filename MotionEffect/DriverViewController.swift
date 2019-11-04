@@ -11,6 +11,8 @@ import LocalAuthentication
 
 class DriverViewController: UIViewController {
     
+    @IBOutlet weak var greetingLabel: UILabel!
+    
     var context = LAContext()
     
     var error: NSError?
@@ -19,25 +21,36 @@ class DriverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         FaceId()
-        // Do any additional setup after loading the view.
     }
     
     func FaceId()
     {
+        var status: Bool = false
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
             let reason = "Log in to your Profile"
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
                 if success {
                     print("success")
+                    status.toggle()
+                    DispatchQueue.main.async {
+                            self.greetingLabel.text = "Hello Raghu!!"
+                    }
                 }
                 else {
-                    print(error?.localizedDescription ?? "Failed to authenticate")
+                    DispatchQueue.main.async {
+                        print(error?.localizedDescription ?? "Failed to authenticate")
+                        self.greetingLabel.text = error?.localizedDescription ?? "Failed to authenticate"
+                    }
+                    
                 }
             }
         
         }
+        
+        
     }
+    
     /*
     // MARK: - Navigation
 

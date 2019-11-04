@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import Lottie
 
 struct JsonResponse: Codable {
     let Response: ResponseData
@@ -35,10 +34,34 @@ struct LinkInfo: Codable{
 }
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var lottieAnimationView: LottieView!
     
+    var lockStatus: Bool = true
+
+    @IBOutlet weak var lockStatusLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    @IBAction func lockBtn(_ sender: UIButton) {
+        
+        if lockStatus {
+            if #available(iOS 13.0, *) { sender.setBackgroundImage(UIImage(systemName: "lock.open"), for: .normal)
+                lockStatus.toggle()
+                playSound(name: "unlock")
+                lockStatusLabel.text = "Unlocked"
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) { sender.setBackgroundImage(UIImage(systemName: "lock"), for: .normal)
+                lockStatus.toggle()
+                playSound(name: "lock")
+                lockStatusLabel.text = " Locked "
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        
+    }
     
     var soundAlert = Bundle.main.path(forResource: "", ofType: "mp3")
     var audioPlayer: AVAudioPlayer!
@@ -64,19 +87,7 @@ class ViewController: UIViewController {
         
 
         
-        applyMotionEffect(toView: backgroundImageView, magnitude: 20)
-    
-        /*
-        if let animationView = LOTAnimationView(name: "forest") {
-            animationView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-            animationView.center = self.view.center
-            animationView.contentMode = .scaleAspectFill
-            
-            view.addSubview(animationView)
-        
-            animationView.play()
-        }
- */
+        applyMotionEffect(toView: backgroundImageView, magnitude: 50)
         
     }
     
@@ -99,8 +110,7 @@ class ViewController: UIViewController {
     }
     
     
-    func playSound(name: String)
-    {
+    func playSound(name: String) {
         soundAlert = Bundle.main.path(forResource: name, ofType: "mp3")
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundAlert!))

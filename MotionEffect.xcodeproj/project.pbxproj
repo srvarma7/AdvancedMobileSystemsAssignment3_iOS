@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		52C5BCF37959B3F7551EA6A4 /* Pods_MotionEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D9A3A4B0969D8C3E521B10 /* Pods_MotionEffect.framework */; };
+		6DB168E2236FEF15002BA2AF /* unlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6DB168E1236FEF14002BA2AF /* unlock.mp3 */; };
 		6DB81768236F5C05000F7782 /* forest.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DB81767236F5C05000F7782 /* forest.json */; };
 		6DDF88D5236D6A4600D0C5CD /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF88D4236D6A4600D0C5CD /* DriverViewController.swift */; };
 		6DDF88D8236D786B00D0C5CD /* carAlertSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6DDF88D7236D786B00D0C5CD /* carAlertSound.mp3 */; };
-		6DDF88DA236D7CEB00D0C5CD /* cardoor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6DDF88D9236D7CEB00D0C5CD /* cardoor.mp3 */; };
+		6DDF88DA236D7CEB00D0C5CD /* lock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6DDF88D9236D7CEB00D0C5CD /* lock.mp3 */; };
 		6DDF88DC236D7D9500D0C5CD /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF88DB236D7D9500D0C5CD /* SensorData.swift */; };
 		6DDF88DE236D828500D0C5CD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF88DD236D828500D0C5CD /* MapViewController.swift */; };
 		869030FA1D6231850092C9DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869030F91D6231850092C9DE /* AppDelegate.swift */; };
@@ -22,10 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6DB168E1236FEF14002BA2AF /* unlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = unlock.mp3; sourceTree = "<group>"; };
 		6DB81767236F5C05000F7782 /* forest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forest.json; sourceTree = "<group>"; };
 		6DDF88D4236D6A4600D0C5CD /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
 		6DDF88D7236D786B00D0C5CD /* carAlertSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = carAlertSound.mp3; sourceTree = "<group>"; };
-		6DDF88D9236D7CEB00D0C5CD /* cardoor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cardoor.mp3; sourceTree = "<group>"; };
+		6DDF88D9236D7CEB00D0C5CD /* lock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lock.mp3; sourceTree = "<group>"; };
 		6DDF88DB236D7D9500D0C5CD /* SensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorData.swift; sourceTree = "<group>"; };
 		6DDF88DD236D828500D0C5CD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		80D9A3A4B0969D8C3E521B10 /* Pods_MotionEffect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MotionEffect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +74,8 @@
 		6DDF88D6236D77EF00D0C5CD /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				6DDF88D9236D7CEB00D0C5CD /* cardoor.mp3 */,
+				6DB168E1236FEF14002BA2AF /* unlock.mp3 */,
+				6DDF88D9236D7CEB00D0C5CD /* lock.mp3 */,
 				6DDF88D7236D786B00D0C5CD /* carAlertSound.mp3 */,
 			);
 			path = Sound;
@@ -103,9 +106,9 @@
 				869030F91D6231850092C9DE /* AppDelegate.swift */,
 				869030FB1D6231850092C9DE /* ViewController.swift */,
 				6DDF88DB236D7D9500D0C5CD /* SensorData.swift */,
-				6DDF88D4236D6A4600D0C5CD /* DriverViewController.swift */,
 				869030FD1D6231850092C9DE /* Main.storyboard */,
 				6DDF88DD236D828500D0C5CD /* MapViewController.swift */,
+				6DDF88D4236D6A4600D0C5CD /* DriverViewController.swift */,
 				869031001D6231850092C9DE /* Assets.xcassets */,
 				869031021D6231850092C9DE /* LaunchScreen.storyboard */,
 				869031051D6231850092C9DE /* Info.plist */,
@@ -186,7 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				869031041D6231850092C9DE /* LaunchScreen.storyboard in Resources */,
-				6DDF88DA236D7CEB00D0C5CD /* cardoor.mp3 in Resources */,
+				6DB168E2236FEF15002BA2AF /* unlock.mp3 in Resources */,
+				6DDF88DA236D7CEB00D0C5CD /* lock.mp3 in Resources */,
 				6DDF88D8236D786B00D0C5CD /* carAlertSound.mp3 in Resources */,
 				869031011D6231850092C9DE /* Assets.xcassets in Resources */,
 				6DB81768236F5C05000F7782 /* forest.json in Resources */,
