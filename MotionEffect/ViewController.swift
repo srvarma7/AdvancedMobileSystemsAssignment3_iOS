@@ -68,27 +68,35 @@ class ViewController: UIViewController {
     
     var speed: String!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("App started in viewController")
         
-//        //city
-//        updateSppedLimit(latitude: -37.815435, longitude: 144.953799)
-//
-//        //northroad
-//        updateSppedLimit(latitude: -37.910743, longitude: 145.096523)
-//        
-//        //gaddStreet
-//        updateSppedLimit(latitude: -37.909896, longitude: 145.096834)
-//
-//        //monash freeway
-//        updateSppedLimit(latitude: -37.868422, longitude: 145.063092)
+        enableImageTapping()
         
-
-        
+    }
+    
+    func enableImageTapping() {
         applyMotionEffect(toView: backgroundImageView, magnitude: 50)
+        let singleTap = UITapGestureRecognizer(target: self,action:Selector(("imageTapped")))
+        backgroundImageView.isUserInteractionEnabled = true
+        backgroundImageView.addGestureRecognizer(singleTap)
         
+        //        //city
+        //        updateSppedLimit(latitude: -37.815435, longitude: 144.953799)
+        //
+        //        //northroad
+        //        updateSppedLimit(latitude: -37.910743, longitude: 145.096523)
+        //
+        //        //gaddStreet
+        //        updateSppedLimit(latitude: -37.909896, longitude: 145.096834)
+        //
+        //        //monash freeway
+        //        updateSppedLimit(latitude: -37.868422, longitude: 145.063092)
+    }
+    
+    @objc func imageTapped() {
+        performSegue(withIdentifier: "loadCar", sender: self)
     }
     
     func updateSppedLimit(latitude: Double, longitude: Double)

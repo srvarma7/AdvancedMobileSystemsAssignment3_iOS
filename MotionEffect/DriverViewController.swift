@@ -34,7 +34,7 @@ class DriverViewController: UIViewController {
                     print("success")
                     status.toggle()
                     DispatchQueue.main.async {
-                            self.greetingLabel.text = "Hello Raghu!!"
+                            self.greetingLabel.text = "Raghu"
                     }
                 }
                 else {
